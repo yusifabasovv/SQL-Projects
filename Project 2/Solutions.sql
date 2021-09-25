@@ -18,7 +18,10 @@ from production.stocks
 
 Q3 :	
 
-select p.product_name ,sum(o.list_price-o.discount) as Spending,sum(o.quantity) as [Stock Needed] from sales.order_items o,production.products p
- where o.product_id=p.product_id group by p.product_name order by Spending,[Stock Needed]
-
+SELECT soi.order_id, sc.first_name + ' ' + sc.last_name AS FullName, pp.product_name,
+pp.list_price * soi.quantity * (1-soi.discount) AS TotalPrc
+FROM [sales].[order_items] soi
+INNER JOIN [sales].[orders] so on soi.order_id=so.order_id
+INNER JOIN [sales].[customers] sc on sc.customer_id=so.customer_id  
+INNER JOIN [production].[products] pp on  pp.product_id=soi.product_id
 
