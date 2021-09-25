@@ -1,4 +1,4 @@
-## Task 3
+## Tasks
 
 *In the first part you will be assigned to work on the HR.Employees table.You should get started to familiarize the table data before carrying out the task below.*
 
